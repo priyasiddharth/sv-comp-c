@@ -25,7 +25,7 @@ This creates a bitcode file of the given name in the `bin/bitvector` directory.
 ## How to run SEAHORN on all benchmarks in the `bitvector` directory?
 
 ``` sh
-./verify-seahorn bitvector <directory where sea exists>
+./verify-seahorn.sh bitvector <directory where sea exists>
 ```
 
 ## Where is the bitcode file located?
