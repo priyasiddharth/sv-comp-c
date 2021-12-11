@@ -39,3 +39,4 @@ The `lib/seahorn` directory contains a file which stubs out functions of interes
 ## How do I add more benchmarks to be run by SEAHORN?
 
 One can copy a benchmark directory of interest from the original repo and things should just work.
+To stub out functions of interest, see the `lib` directory.
