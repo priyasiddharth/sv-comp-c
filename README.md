@@ -20,7 +20,7 @@ make CC=clang-10 EMIT_LLVM=1 byte_add-2.sea.bc
 This creates a bitcode file of the given name in the `bin/bitvector` directory.
 
 >Tip: You can add VERBOSE=1 to see the commands being executed 
->Tip: The `LLVM_LINK` tool name can be changed in `Makefile.config` 
+>Tip: The `LLVM_LINK` tool name can be changed in `Makefile.config` or on command line
 
 ## How to run SEAHORN on all benchmarks in the `bitvector` directory?
 
