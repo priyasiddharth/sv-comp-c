@@ -1,3 +1,6 @@
-extern void __VERIFIER_error(void);
+#include <seahorn/seahorn.h>
 
-void reach_error() { __VERIFIER_error(); }
+void __assert_fail(const char *p0, const char *p1, unsigned int p2,
+                   const char *p3) {
+  __VERIFIER_error();
+}
