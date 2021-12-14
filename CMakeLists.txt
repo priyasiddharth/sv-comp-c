@@ -47,7 +47,7 @@ function(sea_add_unsat_test TARGET)
                        REALPATH BASE_DIR "${CMAKE_BINARY_DIR}")
   add_test(NAME "${TARGET}_unsat_test" COMMAND ${SEA_CMD} yama -y ${SEA_CONFIG_ABS} bpf ${CMAKE_CURRENT_LIST_DIR}/${TARGET}.c ${SEA_LIB_FILE})
   set_tests_properties("${TARGET}_unsat_test" PROPERTIES
-    PASS_REGULAR_EXPRESSION "^.*unsat"
+    PASS_REGULAR_EXPRESSION "unsat"
 )
 endfunction()
 
@@ -56,7 +56,16 @@ function(sea_add_sat_test TARGET)
                        REALPATH BASE_DIR "${CMAKE_BINARY_DIR}")
   add_test(NAME "${TARGET}_sat_test" COMMAND ${SEA_CMD} yama -y ${SEA_CONFIG_ABS} bpf ${CMAKE_CURRENT_LIST_DIR}/${TARGET}.c ${SEA_LIB_FILE})
   set_tests_properties("${TARGET}_sat_test" PROPERTIES
-    PASS_REGULAR_EXPRESSION "^.*[^u][^n]sat")
+    PASS_REGULAR_EXPRESSION "[^u][^n]sat")
+endfunction()
+
+function(sea_add_preprocess_unsat_test TARGET)
+  get_filename_component(SEA_CONFIG_ABS "${SEA_CONFIG}"
+    REALPATH BASE_DIR "${CMAKE_BINARY_DIR}")
+  set (test_parameters "${SEA_CMD} yama -y ${SEA_CONFIG_ABS} bpf ${CMAKE_CURRENT_LIST_DIR}/${TARGET}.c ${SEA_LIB_FILE}")
+  add_test(NAME "${TARGET}_preprocess_unsat_test" COMMAND bash -c ${test_parameters} &> /dev/stdout)
+  set_tests_properties("${TARGET}_preprocess_unsat_test" PROPERTIES
+    PASS_REGULAR_EXPRESSION "WARNING: The program has no main\(\) function")
 endfunction()
 
 
