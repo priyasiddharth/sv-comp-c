@@ -40,6 +40,6 @@ verify_options:
   '-S': ''
 # keep intermediate results for debugging 
   keep-temps: ''
-  temp-dir: /tmp/verify-c-common
+  temp-dir: /tmp/sv-comp-c
 # time and result stats
   horn-stats: true
