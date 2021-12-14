@@ -62,10 +62,10 @@ def main():
     for f in files:
         r = GetTestKind(f)
         if r is TESTKIND.TRUE:
-            print('sea_add_sat_test({f_wo_ext})'.format(
+            print('sea_add_unsat_test({f_wo_ext})'.format(
                   f_wo_ext=os.path.splitext(f)[0]))
         elif r is TESTKIND.FALSE:
-            print('sea_add_unsat_test({f_wo_ext})'.format(
+            print('sea_add_sat_test({f_wo_ext})'.format(
                   f_wo_ext=os.path.splitext(f)[0]))
 
 if __name__ == '__main__':
