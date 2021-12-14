@@ -46,6 +46,9 @@ function(sea_add_unsat_test TARGET)
   get_filename_component(SEA_CONFIG_ABS "${SEA_CONFIG}"
                        REALPATH BASE_DIR "${CMAKE_BINARY_DIR}")
   add_test(NAME "${TARGET}_unsat_test" COMMAND ${SEA_CMD} yama -y ${SEA_CONFIG_ABS} bpf ${CMAKE_CURRENT_LIST_DIR}/${TARGET}.c ${SEA_LIB_FILE})
+  set_tests_properties("${TARGET}_unsat_test" PROPERTIES
+    FAIL_REGULAR_EXPRESSION "^sat"
+)
 endfunction()
 
 function(sea_add_sat_test TARGET)
@@ -53,6 +56,8 @@ function(sea_add_sat_test TARGET)
                        REALPATH BASE_DIR "${CMAKE_BINARY_DIR}")
   add_test(NAME "${TARGET}_sat_test" COMMAND ${SEA_CMD} yama -y ${SEA_CONFIG_ABS} bpf ${CMAKE_CURRENT_LIST_DIR}/${TARGET}.c ${SEA_LIB_FILE})
   set_tests_properties("${TARGET}_sat_test" PROPERTIES WILL_FAIL TRUE)
+  set_tests_properties("${TARGET}_sat_test" PROPERTIES
+    FAIL_REGULAR_EXPRESSION "^unsat")
 endfunction()
 
 
